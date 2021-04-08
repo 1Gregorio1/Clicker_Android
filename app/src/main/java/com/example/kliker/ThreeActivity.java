@@ -52,7 +52,11 @@ public class ThreeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 couter = couter - 10;
-
+                if (couter < 0){
+                    couter = 0;
+                }
+                counterview.setText(couter + "");
+                updateImage(glas);
             }
         });
 
