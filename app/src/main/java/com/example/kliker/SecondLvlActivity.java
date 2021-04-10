@@ -8,22 +8,23 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SecondLvlActivity extends AppCompatActivity{
-    private int faza = 1;
+public class SecondLvlActivity extends AppCompatActivity {
+    private int faza = 0;
     private int switchVariable = 1;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.second_main);
         ImageView window = findViewById(R.id.window);
         ImageView shtora = findViewById(R.id.shtora);
-        ImageView shtora2 = findViewById(R.id.shtora);
+        ImageView shtora1 = findViewById(R.id.shtora1);
         window.setImageResource(R.drawable.window);
         shtora.setImageResource(R.drawable.shtora);
-        shtora2.setImageResource(R.drawable.shtora2);
+        shtora1.setImageResource(R.drawable.shtora1);
         Button mainScreen = findViewById(R.id.button);
-        Button left = findViewById(R.id.left);
-        Button right = findViewById(R.id.right);
+        Button open = findViewById(R.id.left);
+        Button close = findViewById(R.id.right);
 
         mainScreen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,50 +34,48 @@ public class SecondLvlActivity extends AppCompatActivity{
         });
 
 
-    left.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            faza = faza - 1;
-            if (faza < 0) {
-                faza = 0;
+        open.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                faza = faza - 1;
+                if (faza < 0) {
+                    faza = 0;
+                    return;
+                }
+
+                updateImage(shtora,-100, 100, shtora1);
+
             }
+        });
 
-            updateImage(shtora);
-        }
-    });
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                faza = faza + 1;
+                if (faza > 2) {
+                    faza = 2;
+                    return;
+                }
 
-        right.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            faza = faza + 1;
-            if (faza > 2) {
-                faza = 2;
+                updateImage(shtora,100, -100, shtora1);
+
             }
-
-            updateImage(shtora);
-        }
-    });
+        });
     }
-        protected void updateImage(ImageView shtora) {
+
+    protected void updateImage(ImageView shtora, int pixelShtora, int pixelShtora1,  ImageView shtora1) {
 
 
-            switch (faza) {
-                case 0:
-                    shtora.setImageResource(R.drawable.shtora);
-                    shtora.setImageResource(R.drawable.shtora2);
-                    break;
-                case 1:
-                    shtora.setImageResource(R.drawable.shtora);
-                    shtora.setImageResource(R.drawable.shtora2);
-                    break;
-                case 2:
-                    shtora.setImageResource(R.drawable.shtora);
-                    break;
+        shtora.animate()
+                .xBy(pixelShtora)
+                .start();
+        shtora1.animate()
+                .xBy(pixelShtora1)
+                .start();
 
 
-
-        }
     }
 }
+
 
 

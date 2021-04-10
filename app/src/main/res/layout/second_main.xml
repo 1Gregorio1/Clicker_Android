@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,14 +11,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:layout_centerInParent="true"/>
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Вернуться"
-        android:layout_gravity="center_horizontal|bottom"
+        android:layout_alignParentBottom="true"
         android:layout_marginBottom="20dp"
         android:visibility="visible" />
     <Button
@@ -26,7 +27,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Открыть"
-        android:layout_gravity="left|bottom"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginBottom="80dp"
         android:visibility="visible" />
     <Button
@@ -34,23 +36,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Закрыть"
-        android:layout_gravity="right|bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
         android:layout_marginBottom="80dp"
         android:visibility="visible" />
 
     <ImageView
         android:id="@+id/shtora"
-        android:layout_width="230dp"
+        android:layout_width="220dp"
         android:layout_height="720dp"
-        android:layout_gravity="center|right"
+        android:layout_alignParentLeft="true"
         android:text="Hello World!" />
 
     <ImageView
-        android:id="@+id/shtora2"
-        android:layout_width="230dp"
+        android:id="@+id/shtora1"
+        android:layout_width="220dp"
         android:layout_height="720dp"
-        android:layout_gravity="center|left"
+        android:layout_alignParentRight="true"
         android:text="Hello World!" />
 
 
-</FrameLayout>
+</RelativeLayout>
