@@ -21,7 +21,36 @@
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginBottom="20dp"
         android:visibility="visible" />
+    <Button
+        android:id="@+id/left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Открыть"
+        android:layout_gravity="left|bottom"
+        android:layout_marginBottom="80dp"
+        android:visibility="visible" />
+    <Button
+        android:id="@+id/right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Закрыть"
+        android:layout_gravity="right|bottom"
+        android:layout_marginBottom="80dp"
+        android:visibility="visible" />
 
+    <ImageView
+        android:id="@+id/shtora"
+        android:layout_width="230dp"
+        android:layout_height="720dp"
+        android:layout_gravity="center|right"
+        android:text="Hello World!" />
+
+    <ImageView
+        android:id="@+id/shtora2"
+        android:layout_width="230dp"
+        android:layout_height="720dp"
+        android:layout_gravity="center|left"
+        android:text="Hello World!" />
 
 
 </FrameLayout>

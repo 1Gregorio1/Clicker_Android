@@ -87,8 +87,8 @@ public class ThreeActivity extends AppCompatActivity {
 
     protected void updateImage(ImageView glas) {
         if (couter > 0 && couter <= 350) switchVariable = 0;
-        else if (couter > 350 && couter <= 520) switchVariable = 1;
-        else if (couter > 520 && couter <= 910) switchVariable = 2;
+        else if (couter > 350 && couter <= 620) switchVariable = 1;
+        else if (couter > 620 && couter <= 999) switchVariable = 2;
         else if (couter == 1000) switchVariable = 3;
         switch (switchVariable) {
             case 0:
