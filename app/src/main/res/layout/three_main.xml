@@ -10,8 +10,8 @@
         android:id="@+id/glas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:text="Hello World!" />
 
     <TextView
         android:id="@+id/text"
@@ -25,34 +25,56 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Вернуться"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginBottom="20dp"
+        android:text="Вернуться"
         android:visibility="visible" />
+
     <Button
         android:id="@+id/button_minus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="-10"
         android:layout_gravity="left|bottom"
         android:layout_marginBottom="20dp"
+        android:text="-10"
         android:visibility="visible" />
 
     <Button
         android:id="@+id/button_minus_hundred"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="-100"
         android:layout_gravity="left|bottom"
         android:layout_marginBottom="80dp"
+        android:text="-100"
         android:visibility="visible" />
 
     <Button
         android:id="@+id/button_plus_fifty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+50"
         android:layout_gravity="right|bottom"
         android:layout_marginBottom="20dp"
+        android:text="+50"
         android:visibility="visible" />
+
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="@drawable/edit_text_style"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:paddingLeft="10dp" />
+
+
+    <Button
+        android:id="@+id/button_accept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:text="Принять"
+        android:visibility="visible" />
+
 </FrameLayout>

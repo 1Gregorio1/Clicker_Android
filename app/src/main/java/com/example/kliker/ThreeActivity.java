@@ -4,8 +4,10 @@ import android.app.AppComponentFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +27,8 @@ public class ThreeActivity extends AppCompatActivity {
         Button minusTen = findViewById(R.id.button_minus);
         Button minushundred = findViewById(R.id.button_minus_hundred);
         Button plusfifty = findViewById(R.id.button_plus_fifty);
+        Button accept = findViewById(R.id.button_accept);
+        EditText textAccept = findViewById(R.id.editText);
         counterview.setText(couter + "");
 
 
@@ -52,7 +56,7 @@ public class ThreeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 couter = couter - 10;
-                if (couter < 0){
+                if (couter < 0) {
                     couter = 0;
                 }
                 counterview.setText(couter + "");
@@ -64,7 +68,7 @@ public class ThreeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 couter = couter - 100;
-                if (couter < 0){
+                if (couter < 0) {
                     couter = 0;
                 }
                 counterview.setText(couter + "");
@@ -81,6 +85,38 @@ public class ThreeActivity extends AppCompatActivity {
                 }
                 counterview.setText(couter + "");
                 updateImage(glas);
+            }
+        });
+
+        accept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tempString = textAccept.getText().toString();
+
+                if (tempString.equals("")) {
+                    return;
+                }
+
+                int temp = Integer.valueOf(tempString);
+
+                if (temp > 1000) {
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "Старина, введи чило меньше 1000!", Toast.LENGTH_SHORT);
+                    toast.show();
+                    return;
+                }
+                if (temp < 0) {
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "Малютка, введи число больше нуля!", Toast.LENGTH_SHORT);
+                    toast.show();
+                    return;
+                }
+                couter = temp;
+                counterview.setText(String.valueOf(couter));
+                updateImage(glas);
+                textAccept.setText("");
+
+
             }
         });
     }
