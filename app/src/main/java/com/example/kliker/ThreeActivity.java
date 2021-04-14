@@ -94,38 +94,64 @@ public class ThreeActivity extends AppCompatActivity {
                 String tempString = textAccept.getText().toString();
 
                 if (tempString.equals("")) {
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "Уважаемый, ну хоть что то чиркани!", Toast.LENGTH_SHORT);
+                    toast.show();
+                    textAccept.setText("");
+                    return;
+
+                }
+                 int length = tempString.length();
+                if (length > 9){
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "Уважаемая, поменьше циферок пиши!", Toast.LENGTH_SHORT);
+                    toast.show();
+                    textAccept.setText("");
                     return;
                 }
+                // Есть ли точка в строке.
+                /*if (tempString.contains(".")) {
+                    return;
+                }*/
+
+
+
+
 
                 int temp = Integer.valueOf(tempString);
+
 
                 if (temp > 1000) {
                     Toast toast = Toast.makeText(getApplicationContext(),
                             "Старина, введи чило меньше 1000!", Toast.LENGTH_SHORT);
                     toast.show();
+                    textAccept.setText("");
                     return;
                 }
-                if (temp < 0) {
+                if (temp < 1) {
                     Toast toast = Toast.makeText(getApplicationContext(),
                             "Малютка, введи число больше нуля!", Toast.LENGTH_SHORT);
                     toast.show();
+                    textAccept.setText("");
                     return;
                 }
                 couter = temp;
                 counterview.setText(String.valueOf(couter));
                 updateImage(glas);
                 textAccept.setText("");
-
-
             }
-        });
-    }
+
+
+
+    });
+}
 
     protected void updateImage(ImageView glas) {
         if (couter > 0 && couter <= 350) switchVariable = 0;
         else if (couter > 350 && couter <= 620) switchVariable = 1;
         else if (couter > 620 && couter <= 999) switchVariable = 2;
         else if (couter == 1000) switchVariable = 3;
+        else if (couter == 0) switchVariable = 4;
         switch (switchVariable) {
             case 0:
                 glas.setImageResource(R.drawable.glas2);
@@ -138,6 +164,9 @@ public class ThreeActivity extends AppCompatActivity {
                 break;
             case 3:
                 glas.setImageResource(R.drawable.glas00);
+                break;
+            case 4:
+                glas.setImageResource(R.drawable.glasfinal);
                 break;
 
         }

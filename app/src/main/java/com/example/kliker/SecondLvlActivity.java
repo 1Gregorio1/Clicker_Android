@@ -11,20 +11,24 @@ import androidx.appcompat.app.AppCompatActivity;
 public class SecondLvlActivity extends AppCompatActivity {
     private int faza = 0;
     private int switchVariable = 1;
+    private ImageView shtora;
+    private ImageView shtora1;
+    private Button open;
+    private  Button close;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.second_main);
         ImageView window = findViewById(R.id.window);
-        ImageView shtora = findViewById(R.id.shtora);
-        ImageView shtora1 = findViewById(R.id.shtora1);
+        shtora = findViewById(R.id.shtora);
+        shtora1 = findViewById(R.id.shtora1);
         window.setImageResource(R.drawable.window);
         shtora.setImageResource(R.drawable.shtora);
         shtora1.setImageResource(R.drawable.shtora1);
         Button mainScreen = findViewById(R.id.button);
-        Button open = findViewById(R.id.left);
-        Button close = findViewById(R.id.right);
+        open = findViewById(R.id.left);
+        close = findViewById(R.id.right);
 
         mainScreen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +47,7 @@ public class SecondLvlActivity extends AppCompatActivity {
                     return;
                 }
 
-                updateImage(shtora,-100, 100, shtora1);
+                updateImage(-50, 50);
 
             }
         });
@@ -52,23 +56,38 @@ public class SecondLvlActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 faza = faza + 1;
-                if (faza > 2) {
-                    faza = 2;
+                if (faza > 5) {
+                    faza = 5;
                     return;
                 }
 
-                updateImage(shtora,100, -100, shtora1);
+                updateImage(50, -50);
 
             }
         });
     }
 
-    protected void updateImage(ImageView shtora, int pixelShtora, int pixelShtora1,  ImageView shtora1) {
+    protected void updateImage(int pixelShtora, int pixelShtora1) {
 
 
         shtora.animate()
                 .xBy(pixelShtora)
+                .withEndAction(new Runnable() {
+                    @Override
+                    public void run() {
+                        open.setEnabled(true);
+                        close.setEnabled(true);
+                    }
+                })
+                .withStartAction(new Runnable() {
+                    @Override
+                    public void run() {
+                        open.setEnabled(false);
+                        close.setEnabled(false);
+                    }
+                })
                 .start();
+
         shtora1.animate()
                 .xBy(pixelShtora1)
                 .start();
@@ -76,6 +95,8 @@ public class SecondLvlActivity extends AppCompatActivity {
 
     }
 }
+
+
 
 
 

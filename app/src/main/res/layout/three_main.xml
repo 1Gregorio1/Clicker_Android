@@ -64,7 +64,7 @@
         android:layout_height="50dp"
         android:background="@drawable/edit_text_style"
         android:ems="10"
-        android:inputType="numberDecimal"
+        android:inputType="numberSigned"
         android:paddingLeft="10dp" />
 
 
