@@ -1,6 +1,8 @@
 package com.example.kliker;
 
 import android.app.AppComponentFactory;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ThreeActivity extends AppCompatActivity {
     private int couter = 1000;
     private int switchVariable = 0;
+    private SharedPreferences sp;
+    private final static String KEY_COUNTER = "counter";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,6 +34,10 @@ public class ThreeActivity extends AppCompatActivity {
         Button accept = findViewById(R.id.button_accept);
         EditText textAccept = findViewById(R.id.editText);
         counterview.setText(couter + "");
+        sp = getPreferences(MODE_PRIVATE);
+        couter = sp.getInt(KEY_COUNTER,1000);
+        counterview.setText(couter + "");
+        updateImage(glas);
 
 
         glas.setOnClickListener(new View.OnClickListener() {
@@ -101,8 +109,8 @@ public class ThreeActivity extends AppCompatActivity {
                     return;
 
                 }
-                 int length = tempString.length();
-                if (length > 9){
+                int length = tempString.length();
+                if (length > 9) {
                     Toast toast = Toast.makeText(getApplicationContext(),
                             "Уважаемая, поменьше циферок пиши!", Toast.LENGTH_SHORT);
                     toast.show();
@@ -113,9 +121,6 @@ public class ThreeActivity extends AppCompatActivity {
                 /*if (tempString.contains(".")) {
                     return;
                 }*/
-
-
-
 
 
                 int temp = Integer.valueOf(tempString);
@@ -142,9 +147,8 @@ public class ThreeActivity extends AppCompatActivity {
             }
 
 
-
-    });
-}
+        });
+    }
 
     protected void updateImage(ImageView glas) {
         if (couter > 0 && couter <= 350) switchVariable = 0;
@@ -170,5 +174,12 @@ public class ThreeActivity extends AppCompatActivity {
                 break;
 
         }
+    };
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sp.edit().putInt(KEY_COUNTER,couter).apply();
     }
 }
+
