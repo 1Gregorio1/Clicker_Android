@@ -1,5 +1,6 @@
 package com.example.kliker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +15,7 @@ public class SecondLvlActivity extends AppCompatActivity {
     private ImageView shtora;
     private ImageView shtora1;
     private Button open;
-    private  Button close;
+    private Button close;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class SecondLvlActivity extends AppCompatActivity {
         shtora.setImageResource(R.drawable.shtora);
         shtora1.setImageResource(R.drawable.shtora1);
         Button mainScreen = findViewById(R.id.button);
+        Button fourthmain = findViewById(R.id.bottleLVL);
         open = findViewById(R.id.left);
         close = findViewById(R.id.right);
 
@@ -65,8 +67,14 @@ public class SecondLvlActivity extends AppCompatActivity {
 
             }
         });
-    }
+        fourthmain.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick (View v){
+                startActivity(new Intent(SecondLvlActivity.this, FourthActivity.class));
+            }
+        });
 
+ }
     protected void updateImage(int pixelShtora, int pixelShtora1) {
 
 
