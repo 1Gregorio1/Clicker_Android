@@ -40,6 +40,24 @@ public class FourthActivity extends AppCompatActivity {
         lastAngle = angle;
         animation.setDuration(2500);
         animation.setFillAfter(true);
+        //Отслеживание состояния анимации
+        animation.setAnimationListener(new Animation.AnimationListener(){
+
+            @Override
+            public void onAnimationStart(Animation animation) {
+                mBottleImageView.setClickable(false);
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                mBottleImageView.setClickable(true);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
 
         mBottleImageView.startAnimation(animation);
 
